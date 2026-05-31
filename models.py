@@ -13,7 +13,7 @@ class Incidente(Base):
     
     # Información del lugar y tipo de delito (reemplaza varchar por String)
     barrio: Mapped[str] = mapped_column(String(100), nullable=False)
-    tipo_delito: Mapped[str] = mapped_column(String(100), nullable=False)
+    incidente: Mapped[str] = mapped_column(String(100), nullable=False)
     
     # Fecha y hora exacta en la que ocurrió el incidente real
     fecha_y_hora: Mapped[DateTime] = mapped_column(DateTime, nullable=False)

@@ -19,7 +19,7 @@ app = FastAPI(title="API de Seguridad Local - MVP Colombia")
 # 5. ESQUEMA DE PYDANTIC: Valida los datos que entran cuando publicas a mano
 class IncidenteCreate(BaseModel):
     barrio: str
-    tipo_delito: str
+    incidente: str
     fecha_y_hora: datetime  # Acepta formatos como "2026-05-27 15:30:00"
     peso: int = 1
     carrera: Optional[int] = None
@@ -32,7 +32,7 @@ def guardar_incidente(incidente_in: IncidenteCreate, db: Session = Depends(get_d
         # Mapeamos el JSON recibido al modelo de la base de datos de SQLAlchemy
         nuevo_incidente = Incidente(
             barrio=incidente_in.barrio,
-            tipo_delito=incidente_in.tipo_delito,
+            incidente=incidente_in.incidente,
             fecha_y_hora=incidente_in.fecha_y_hora,
             peso=incidente_in.peso,
             carrera=incidente_in.carrera,
