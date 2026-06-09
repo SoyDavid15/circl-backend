@@ -1,10 +1,9 @@
 from fastapi import FastAPI
-import os
 import httpx
 from dotenv import load_dotenv
 load_dotenv()
 
-WEATHER_KEY = os.getenv("WEATHER_KEY")
+WEATHER_KEY = "6cc9ccedd6de5691035785e3983f1048"
 
 app = FastAPI()
 
@@ -17,6 +16,8 @@ async def get_data_weather(lat: float = 10.9639, lon: float = -74.7964):
     async with httpx.AsyncClient() as client:
         response = await client.get(URL)
         return response.json()
+
+
 
 @app.get('/news')
 async def get_news_data():
